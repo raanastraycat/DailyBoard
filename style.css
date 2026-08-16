@@ -1,0 +1,365 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --input: #f8f9fc;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --danger: #ef4444;
+  --shadow: 0 4px 18px rgba(15, 23, 42, .06);
+}
+
+body.dark {
+  --bg: #111827;
+  --card: #1f2937;
+  --input: #273449;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --border: #374151;
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+  --danger: #f87171;
+  --shadow: 0 4px 18px rgba(0, 0, 0, .2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .25s ease, color .25s ease;
+}
+
+.topbar {
+  width: min(1050px, calc(100% - 32px));
+  margin: 32px auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.eyebrow {
+  margin-bottom: 5px;
+  color: var(--primary);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.topbar h1 {
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  letter-spacing: -.04em;
+}
+
+#app {
+  width: min(1050px, calc(100% - 32px));
+  margin: 0 auto 50px;
+  display: grid;
+  gap: 16px;
+}
+
+section,
+#kutipan-container {
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+section h3,
+#kutipan-container h3 {
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+#status {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+#kutipan-container {
+  border-left: 3px solid var(--primary);
+}
+
+#kutipan-harian {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: .95rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: var(--input);
+  color: var(--text);
+  font: inherit;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, .12);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.theme-button {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.theme-button:hover {
+  background: var(--input);
+  color: var(--primary);
+}
+
+#tugas > input[type="text"] {
+  width: calc(100% - 145px);
+  margin-right: 6px;
+}
+
+#tugas > input[type="text"] + button {
+  width: 135px;
+}
+
+#cari-tugas {
+  margin-top: 10px;
+}
+
+#filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 14px 0;
+}
+
+#filter-container button {
+  padding: 8px 12px;
+  background: var(--input);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  font-size: .85rem;
+}
+
+#filter-container button:hover {
+  color: var(--primary);
+  background: var(--input);
+}
+
+#filter-container button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+#daftar-tugas {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+
+.tugas-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  min-height: 50px;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+.tugas-item:hover {
+  border-color: var(--primary);
+  transform: translateX(2px);
+}
+
+.tugas-item.menyeret {
+  opacity: .45;
+}
+
+.tugas-item.tujuan-drop {
+  border: 1px dashed var(--primary);
+}
+
+.drag-handle {
+  color: var(--muted);
+  cursor: grab;
+  user-select: none;
+}
+
+.max {
+  flex: 1;
+  color: var(--text);
+  cursor: pointer;
+  word-break: break-word;
+}
+
+.tugas-item button {
+  padding: 6px 9px;
+  background: transparent;
+  color: var(--danger);
+  font-size: .8rem;
+}
+
+.tugas-item button:hover {
+  background: rgba(239, 68, 68, .08);
+  color: var(--danger);
+}
+
+#form-catatan {
+  display: grid;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+#daftar-catatan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.catatan-item {
+  padding: 15px;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.catatan-item p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.catatan-item small {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.catatan-item button {
+  margin: 24px;
+  padding: 6px 9px;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--border);
+  font-size: .8rem;
+}
+
+#info-cuaca {
+  margin-top: 12px;
+  padding: 16px;
+  min-height: 80px;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+#cuaca button {
+  margin-top: 10px;
+}
+
+#info-cuaca p {
+  line-height: 1.6;
+}
+
+#info-cuaca p:first-child {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+footer {
+  padding: 25px 16px;
+  color: var(--muted);
+  text-align: center;
+  font-size: .8rem;
+}
+
+@media (max-width: 650px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .theme-button {
+    width: 100%;
+  }
+
+  #tugas > input[type="text"] {
+    width: 100%;
+    margin: 0 0 7px;
+  }
+
+  #tugas > input[type="text"] + button {
+    width: 100%;
+  }
+
+  section,
+  #kutipan-container {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
