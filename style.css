@@ -5,29 +5,30 @@
 }
 
 :root {
-  --bg: #f4f7fb;
+  --bg: #ffffff;
   --card: #ffffff;
-  --input: #f7f9fc;
-  --text: #263238;
-  --muted: #718096;
-  --border: #dfe7f1;
-  --primary: #5b8fdc;
-  --primary-dark: #477bc5;
-  --danger: #d96b6b;
-  --shadow: 0 6px 20px rgba(50, 80, 120, 0.08);
+  --input: #f5f7fa;
+  --text: #252b33;
+  --muted: #6d7680;
+  --border: #dfe4ea;
+  --primary: #4d86c6;
+  --primary-dark: #3d72ad;
+  --danger: #c85c5c;
+  --shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
 }
 
+body.dark,
 body.dark-mode {
-  --bg: #18212d;
-  --card: #222d3a;
-  --input: #2a3746;
-  --text: #edf3fa;
-  --muted: #9caec0;
-  --border: #354556;
-  --primary: #79a9e8;
-  --primary-dark: #6095d9;
-  --danger: #e48686;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  --bg: #25272b;
+  --card: #303237;
+  --input: #3a3d43;
+  --text: #f1f1f1;
+  --muted: #b2b5ba;
+  --border: #474a50;
+  --primary: #6e9fd4;
+  --primary-dark: #5889be;
+  --danger: #e07a7a;
+  --shadow: 0 3px 14px rgba(0, 0, 0, 0.18);
 }
 
 html {
@@ -43,67 +44,53 @@ body {
 }
 
 header {
-  width: min(1150px, calc(100% - 40px));
-  margin: 28px auto 20px;
+  width: min(1180px, calc(100% - 40px));
+  margin: 28px auto 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 header h1 {
-  font-size: 2.2rem;
-  letter-spacing: -1px;
-  color: var(--text);
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.status,
-.hint {
-  margin-top: 5px;
+.status {
+  margin-top: 4px;
   color: var(--muted);
   font-size: 0.85rem;
 }
 
 main {
-  width: min(1150px, calc(100% - 40px));
+  width: min(1180px, calc(100% - 40px));
   margin: 0 auto 40px;
   display: grid;
-  grid-template-columns: 1.45fr 0.9fr;
-  grid-template-areas:
-    "tugas catatan"
-    "kutipan cuaca";
-  gap: 18px;
-  align-items: start;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
 }
 
 .left-column,
 .right-column {
-  display: contents;
+  display: grid;
+  gap: 16px;
 }
 
-.left-column .card:nth-child(1) {
-  grid-area: tugas;
+.left-column {
+  grid-template-rows: 1fr auto;
 }
 
-.left-column .card:nth-child(2) {
-  grid-area: catatan;
-}
-
-.right-column .card:nth-child(1) {
-  grid-area: kutipan;
-}
-
-.right-column .card:nth-child(2) {
-  grid-area: cuaca;
+.right-column {
+  grid-template-rows: auto 1fr;
 }
 
 .card {
-  padding: 22px;
+  padding: 20px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 12px;
   box-shadow: var(--shadow);
-  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .card h2 {
@@ -111,20 +98,19 @@ main {
   font-size: 1.15rem;
 }
 
-.card-header-flex {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
+.hint {
   margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 input,
 textarea {
   width: 100%;
-  padding: 11px 13px;
+  padding: 11px 12px;
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: 8px;
   outline: none;
   background: var(--input);
   color: var(--text);
@@ -140,7 +126,7 @@ textarea::placeholder {
 input:focus,
 textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(91, 143, 220, 0.12);
+  box-shadow: 0 0 0 3px rgba(77, 134, 198, 0.12);
 }
 
 textarea {
@@ -149,11 +135,11 @@ textarea {
 }
 
 button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 9px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
   background: var(--primary);
-  color: white;
+  color: #ffffff;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -162,59 +148,57 @@ button {
 
 button:hover {
   background: var(--primary-dark);
-  transform: translateY(-1px);
 }
 
 button:active {
-  transform: translateY(0);
+  transform: scale(0.98);
 }
 
 #toggle-tema {
   background: var(--card);
   color: var(--text);
-  border: 1px solid var(--border);
+  border-color: var(--border);
 }
 
 #toggle-tema:hover {
-  background: var(--input);
   color: var(--primary);
+  background: var(--input);
 }
 
 #form-tugas {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   gap: 8px;
-  margin-top: 16px;
-}
-
-#form-tugas input {
-  flex: 1;
-}
-
-#form-tugas button {
-  white-space: nowrap;
 }
 
 .task-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   margin: 14px 0;
 }
 
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 10px;
+  gap: 6px;
 }
 
 .filters button {
-  padding: 7px 11px;
+  padding: 7px 10px;
   background: var(--input);
   color: var(--muted);
-  border: 1px solid var(--border);
-  font-size: 0.85rem;
+  border-color: var(--border);
+  font-size: 0.8rem;
 }
 
 .filters button:hover {
   color: var(--primary);
+}
+
+#cari-tugas {
+  max-width: 190px;
 }
 
 #daftar-tugas {
@@ -227,17 +211,14 @@ button:active {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 11px 12px;
-  min-height: 48px;
+  padding: 11px;
   background: var(--input);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  border-radius: 9px;
 }
 
 .tugas-item:hover {
   border-color: var(--primary);
-  transform: translateX(2px);
 }
 
 .tugas-nama {
@@ -251,47 +232,39 @@ button:active {
   text-decoration: line-through;
 }
 
-.tugas-item.dragging {
-  opacity: 0.5;
-}
-
-.btn-hapus,
-.btn-hapus-catatan {
+.tugas-item button {
   padding: 6px 9px;
   background: transparent;
   color: var(--danger);
-  border: 1px solid var(--border);
-  font-size: 0.8rem;
+  border-color: var(--border);
+  font-size: 0.78rem;
 }
 
-.btn-hapus:hover,
-.btn-hapus-catatan:hover {
-  background: rgba(217, 107, 107, 0.08);
-  color: var(--danger);
+.dragging {
+  opacity: 0.5;
 }
 
 #form-catatan {
   display: grid;
   gap: 9px;
-  margin-top: 16px;
   margin-bottom: 16px;
 }
 
 #daftar-catatan {
   display: grid;
-  gap: 10px;
+  gap: 9px;
 }
 
 .catatan-item {
-  padding: 14px;
+  padding: 13px;
   background: var(--input);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 9px;
 }
 
 .catatan-isi {
-  margin-bottom: 10px;
-  line-height: 1.6;
+  margin-bottom: 8px;
+  line-height: 1.55;
   white-space: pre-wrap;
   word-break: break-word;
   cursor: pointer;
@@ -299,99 +272,101 @@ button:active {
 
 .catatan-tanggal {
   display: block;
-  margin-bottom: 10px;
   color: var(--muted);
   font-size: 0.75rem;
 }
 
 .catatan-actions {
-  display: flex;
-  justify-content: flex-end;
-}
-
-#kutipan-harian {
-  min-height: 100px;
-  padding: 16px;
-  background: var(--input);
-  border-left: 3px solid var(--primary);
-  border-radius: 0 10px 10px 0;
-  color: var(--text);
-  line-height: 1.7;
-  font-style: italic;
-}
-
-#status-kutipan,
-#status-cuaca {
-  min-height: 20px;
   margin-top: 10px;
 }
 
-.weather-card {
-  min-height: 260px;
+.btn-hapus-catatan {
+  padding: 6px 9px;
+  background: transparent;
+  color: var(--danger);
+  border-color: var(--border);
+  font-size: 0.78rem;
 }
 
-#info-cuaca {
-  min-height: 80px;
-  padding: 15px;
-  background: var(--input);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
-  line-height: 1.7;
-}
-
-#info-cuaca p {
-  margin-bottom: 4px;
-}
-
-#info-cuaca p:first-child {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.cuaca-form {
+.card-header-flex {
   display: flex;
-  gap: 8px;
-  margin-top: 14px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-.cuaca-form input {
-  flex: 1;
-}
-
-.cuaca-form button {
-  white-space: nowrap;
+.card-header-flex h2 {
+  margin-bottom: 0;
 }
 
 .btn-sm {
   padding: 7px 10px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
+}
+
+#kutipan-harian {
+  padding: 15px;
+  min-height: 90px;
+  background: var(--input);
+  border-left: 3px solid var(--primary);
+  border-radius: 8px;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+#status-kutipan,
+#status-cuaca {
+  min-height: 18px;
+  margin-top: 10px;
+}
+
+.weather-card {
+  display: flex;
+  flex-direction: column;
+}
+
+#info-cuaca {
+  padding: 15px;
+  min-height: 90px;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  line-height: 1.6;
+}
+
+.cuaca-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 14px;
 }
 
 footer {
-  padding: 25px 16px;
+  padding: 22px 16px;
+  border-top: 1px solid var(--border);
   color: var(--muted);
   text-align: center;
   font-size: 0.8rem;
 }
 
 @media (max-width: 800px) {
-  header,
-  main {
-    width: min(100% - 28px, 700px);
+  header {
+    width: min(100% - 28px, 1180px);
   }
 
   main {
+    width: min(100% - 28px, 1180px);
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "tugas"
-      "catatan"
-      "kutipan"
-      "cuaca";
+  }
+
+  .left-column,
+  .right-column {
+    grid-template-rows: auto;
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 560px) {
   header {
     flex-direction: column;
     align-items: stretch;
@@ -403,20 +378,20 @@ footer {
 
   #form-tugas,
   .cuaca-form {
+    grid-template-columns: 1fr;
+  }
+
+  .task-tools {
     flex-direction: column;
+    align-items: stretch;
   }
 
-  #form-tugas button,
-  .cuaca-form button {
-    width: 100%;
-  }
-
-  .card {
-    padding: 17px;
+  #cari-tugas {
+    max-width: none;
   }
 
   .card-header-flex {
-    align-items: center;
+    flex-direction: column;
   }
 }
 
