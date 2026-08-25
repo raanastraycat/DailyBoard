@@ -5,31 +5,31 @@
 }
 
 :root {
-  --bg: #f4f7fa;
-  --card: #ffffff;
-  --input: #f8fafc;
-  --text: #273444;
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-soft: #f7f9fc;
+  --text: #273142;
   --muted: #718096;
-  --border: #dce5ed;
-  --primary: #4b9bd8;
-  --primary-dark: #3d85bd;
-  --primary-soft: #eaf4fb;
-  --danger: #d85c5c;
-  --shadow: 0 4px 14px rgba(40, 70, 100, 0.08);
+  --border: #dce5ef;
+  --primary: #4f8fcf;
+  --primary-hover: #397ab8;
+  --primary-soft: #eaf4ff;
+  --danger: #d95c5c;
+  --shadow: 0 8px 24px rgba(47, 72, 99, 0.08);
 }
 
 body.dark-mode {
-  --bg: #18222d;
-  --card: #202d3a;
-  --input: #263746;
-  --text: #eef4f8;
-  --muted: #9aa9b7;
-  --border: #34495a;
-  --primary: #65aee3;
-  --primary-dark: #4d9bd4;
-  --primary-soft: #293e4f;
-  --danger: #e87878;
-  --shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  --bg: #17212e;
+  --surface: #202c3b;
+  --surface-soft: #263547;
+  --text: #edf4fb;
+  --muted: #9baec0;
+  --border: #35485c;
+  --primary: #6ba9df;
+  --primary-hover: #8bbce8;
+  --primary-soft: #243e58;
+  --danger: #ef8585;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 html {
@@ -38,91 +38,80 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: Inter, Arial, sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
   transition: background 0.25s ease, color 0.25s ease;
 }
 
 header {
-  width: min(1100px, calc(100% - 32px));
+  width: min(1180px, calc(100% - 40px));
   margin: 28px auto 18px;
-  padding: 18px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background: var(--card);
+  padding: 18px 20px;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 header h1 {
-  color: var(--primary);
-  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   letter-spacing: -0.04em;
 }
 
 .status {
-  margin-top: 5px;
+  margin-top: 4px;
   color: var(--muted);
   font-size: 0.85rem;
 }
 
 main {
-  width: min(1100px, calc(100% - 32px));
+  width: min(1180px, calc(100% - 40px));
   margin: 0 auto 40px;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-
-.left-column {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.8fr);
   gap: 18px;
   align-items: start;
 }
 
+.left-column,
 .right-column {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
   gap: 18px;
 }
 
 .card {
-  padding: 20px;
-  background: var(--card);
+  padding: 22px;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow);
 }
 
-.left-column .card:last-child {
-  grid-column: 1 / -1;
-}
-
 .card h2 {
   margin-bottom: 8px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .hint {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 0.85rem;
   line-height: 1.5;
 }
 
 input,
 textarea {
   width: 100%;
-  padding: 10px 12px;
+  padding: 11px 13px;
   border: 1px solid var(--border);
   border-radius: 9px;
   outline: none;
-  background: var(--input);
+  background: var(--surface-soft);
   color: var(--text);
   font: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -136,7 +125,7 @@ textarea::placeholder {
 input:focus,
 textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(75, 155, 216, 0.12);
+  box-shadow: 0 0 0 3px rgba(79, 143, 207, 0.12);
 }
 
 textarea {
@@ -145,19 +134,19 @@ textarea {
 }
 
 button {
-  padding: 10px 14px;
+  padding: 10px 15px;
   border: 1px solid transparent;
   border-radius: 9px;
   background: var(--primary);
-  color: white;
+  color: #ffffff;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
 button:hover {
-  background: var(--primary-dark);
+  background: var(--primary-hover);
   transform: translateY(-1px);
 }
 
@@ -166,45 +155,61 @@ button:active {
 }
 
 #toggle-tema {
-  background: var(--primary-soft);
+  background: var(--surface-soft);
   color: var(--text);
   border-color: var(--border);
 }
 
 #toggle-tema:hover {
-  background: var(--primary);
-  color: white;
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 #form-tugas {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8px;
+  margin-bottom: 14px;
 }
 
 .task-tools {
-  display: grid;
+  display: flex;
+  align-items: center;
   gap: 10px;
-  margin: 14px 0;
+  margin-bottom: 14px;
 }
 
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 6px;
 }
 
 .filters button {
   padding: 7px 11px;
-  background: var(--input);
+  background: var(--surface-soft);
   color: var(--muted);
   border-color: var(--border);
-  font-size: 0.83rem;
+  font-size: 0.8rem;
 }
 
 .filters button:hover {
   background: var(--primary-soft);
-  color: var(--primary-dark);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.filters button.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+#cari-tugas {
+  max-width: 180px;
+  padding: 8px 10px;
+  font-size: 0.85rem;
 }
 
 #daftar-tugas {
@@ -218,8 +223,7 @@ button:active {
   align-items: center;
   gap: 10px;
   padding: 11px 12px;
-  min-height: 50px;
-  background: var(--input);
+  background: var(--surface-soft);
   border: 1px solid var(--border);
   border-radius: 10px;
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -251,45 +255,48 @@ button:active {
   background: transparent;
   color: var(--danger);
   border-color: var(--border);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
 }
 
 .btn-hapus:hover,
 .btn-hapus-catatan:hover {
-  background: rgba(216, 92, 92, 0.08);
+  background: rgba(217, 92, 92, 0.08);
   color: var(--danger);
+  border-color: var(--danger);
 }
 
 #form-catatan {
   display: grid;
-  gap: 9px;
+  gap: 10px;
   margin-bottom: 16px;
+}
+
+#form-catatan button {
+  justify-self: start;
 }
 
 #daftar-catatan {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 10px;
 }
 
 .catatan-item {
   padding: 14px;
-  background: var(--input);
+  background: var(--surface-soft);
   border: 1px solid var(--border);
   border-radius: 10px;
 }
 
 .catatan-isi {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
   line-height: 1.6;
-  white-space: pre-wrap;
   word-break: break-word;
   cursor: pointer;
 }
 
 .catatan-tanggal {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--muted);
   font-size: 0.75rem;
 }
@@ -304,74 +311,115 @@ button:active {
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.card-header-flex h2 {
+  margin-bottom: 4px;
 }
 
 .btn-sm {
   padding: 7px 10px;
   font-size: 0.78rem;
+  white-space: nowrap;
 }
 
 #kutipan-harian {
-  padding: 15px;
+  min-height: 90px;
+  padding: 16px;
   background: var(--primary-soft);
   border-left: 3px solid var(--primary);
   border-radius: 8px;
   color: var(--text);
   line-height: 1.7;
+  font-size: 0.92rem;
 }
 
 #status-kutipan,
 #status-cuaca {
+  min-height: 18px;
   margin-top: 10px;
+  font-size: 0.78rem;
 }
 
 .weather-card {
-  min-height: 100%;
+  overflow: hidden;
+}
+
+#weather-location {
+  margin-bottom: 0;
 }
 
 #info-cuaca {
-  margin: 14px 0;
-  padding: 15px;
-  min-height: 80px;
-  background: var(--input);
+  min-height: 100px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: var(--primary-soft);
   border: 1px solid var(--border);
   border-radius: 10px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .cuaca-form {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8px;
+  margin-top: 8px;
+}
+
+.cuaca-form button {
+  white-space: nowrap;
 }
 
 footer {
-  padding: 25px 16px;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 22px 0 30px;
   color: var(--muted);
   text-align: center;
   font-size: 0.8rem;
 }
 
-@media (max-width: 800px) {
-  .left-column,
-  .right-column {
+@media (max-width: 850px) {
+  main {
     grid-template-columns: 1fr;
   }
 
-  .left-column .card:last-child {
-    grid-column: auto;
+  .right-column {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+  header {
+    width: min(100% - 24px, 1180px);
+    margin-top: 12px;
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  main {
+    width: min(100% - 24px, 1180px);
+  }
+
+  footer {
+    width: min(100% - 24px, 1180px);
+  }
+
   header {
     flex-direction: column;
-    align-items: stretch;
   }
 
   #toggle-tema {
     width: 100%;
+  }
+
+  .right-column {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 17px;
   }
 
   #form-tugas,
@@ -379,13 +427,29 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  header,
-  main {
-    width: calc(100% - 20px);
+  .task-tools {
+    align-items: stretch;
+    flex-direction: column;
   }
 
-  .card {
-    padding: 16px;
+  #cari-tugas {
+    max-width: none;
+  }
+
+  .filters {
+    width: 100%;
+  }
+
+  .filters button {
+    flex: 1;
+  }
+
+  .card-header-flex {
+    flex-direction: column;
+  }
+
+  .btn-sm {
+    align-self: flex-start;
   }
 }
 
