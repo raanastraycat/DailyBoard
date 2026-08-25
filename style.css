@@ -5,29 +5,35 @@
 }
 
 :root {
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --input: #f8f9fc;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --danger: #ef4444;
-  --shadow: 0 4px 18px rgba(15, 23, 42, .06);
+  --bg: #eaf6ff;
+  --bg-soft: #f7fbff;
+  --card: rgba(255, 255, 255, .92);
+  --input: #f3f9ff;
+  --text: #24344d;
+  --muted: #718096;
+  --border: #cfe5f7;
+  --primary: #4aa8e8;
+  --primary-dark: #258bd1;
+  --primary-soft: #dff2ff;
+  --cyan: #72d8ef;
+  --danger: #ef6f7d;
+  --shadow: 0 8px 25px rgba(74, 168, 232, .12);
 }
 
-body.dark {
-  --bg: #111827;
-  --card: #1f2937;
-  --input: #273449;
-  --text: #f9fafb;
-  --muted: #9ca3af;
-  --border: #374151;
-  --primary: #818cf8;
-  --primary-dark: #6366f1;
-  --danger: #f87171;
-  --shadow: 0 4px 18px rgba(0, 0, 0, .2);
+body.dark-mode {
+  --bg: #101b2d;
+  --bg-soft: #14233a;
+  --card: #182a43;
+  --input: #1d3452;
+  --text: #edf7ff;
+  --muted: #9db4ca;
+  --border: #294866;
+  --primary: #62c2ff;
+  --primary-dark: #3da9eb;
+  --primary-soft: #1c405d;
+  --cyan: #76dfff;
+  --danger: #ff8793;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .25);
 }
 
 html {
@@ -37,72 +43,79 @@ html {
 body {
   min-height: 100vh;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top right, rgba(114, 216, 239, .25), transparent 30%),
+    linear-gradient(180deg, #e9f7ff 0%, var(--bg) 100%);
   color: var(--text);
   transition: background .25s ease, color .25s ease;
 }
 
-.topbar {
-  width: min(1050px, calc(100% - 32px));
-  margin: 32px auto 20px;
+body.dark-mode {
+  background:
+    radial-gradient(circle at top right, rgba(98, 194, 255, .1), transparent 30%),
+    var(--bg);
+}
+
+header {
+  width: min(1100px, calc(100% - 32px));
+  margin: 28px auto 22px;
+  padding: 22px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-}
-
-.eyebrow {
-  margin-bottom: 5px;
-  color: var(--primary);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-}
-
-.topbar h1 {
-  font-size: clamp(2rem, 5vw, 2.7rem);
-  letter-spacing: -.04em;
-}
-
-#app {
-  width: min(1050px, calc(100% - 32px));
-  margin: 0 auto 50px;
-  display: grid;
-  gap: 16px;
-}
-
-section,
-#kutipan-container {
-  padding: 22px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 22px;
   box-shadow: var(--shadow);
 }
 
-section h3,
-#kutipan-container h3 {
-  margin-bottom: 16px;
-  font-size: 1.05rem;
+header h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  letter-spacing: -.05em;
+  color: var(--primary);
 }
 
-#status {
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--card);
+.status {
+  margin-top: 5px;
   color: var(--muted);
   font-size: .85rem;
 }
 
-#kutipan-container {
-  border-left: 3px solid var(--primary);
+main {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto 45px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .8fr);
+  gap: 18px;
+  align-items: start;
 }
 
-#kutipan-harian {
+.left-column,
+.right-column {
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.hint {
+  margin-bottom: 15px;
   color: var(--muted);
-  line-height: 1.7;
-  font-size: .95rem;
+  font-size: .84rem;
+  line-height: 1.5;
 }
 
 input,
@@ -110,12 +123,12 @@ textarea {
   width: 100%;
   padding: 11px 13px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   outline: none;
   background: var(--input);
   color: var(--text);
   font: inherit;
-  transition: border-color .2s ease, box-shadow .2s ease;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
 input::placeholder,
@@ -126,7 +139,7 @@ textarea::placeholder {
 input:focus,
 textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, .12);
+  box-shadow: 0 0 0 4px rgba(74, 168, 232, .14);
 }
 
 textarea {
@@ -137,77 +150,74 @@ textarea {
 button {
   padding: 10px 15px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--primary);
   color: white;
   font: inherit;
-  font-weight: 600;
+  font-weight: 650;
   cursor: pointer;
-  transition: background .2s ease, transform .2s ease;
+  box-shadow: 0 4px 10px rgba(74, 168, 232, .16);
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
 }
 
 button:hover {
   background: var(--primary-dark);
   transform: translateY(-1px);
+  box-shadow: 0 7px 15px rgba(74, 168, 232, .22);
 }
 
 button:active {
   transform: translateY(0);
 }
 
-.theme-button {
-  background: var(--card);
-  color: var(--text);
+#toggle-tema {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
   border: 1px solid var(--border);
+  box-shadow: none;
 }
 
-.theme-button:hover {
-  background: var(--input);
-  color: var(--primary);
+#toggle-tema:hover {
+  background: var(--primary);
+  color: white;
 }
 
-#tugas > input[type="text"] {
-  width: calc(100% - 145px);
-  margin-right: 6px;
+#form-tugas {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
 }
 
-#tugas > input[type="text"] + button {
-  width: 135px;
+.task-tools {
+  display: grid;
+  gap: 10px;
+  margin: 15px 0;
 }
 
-#cari-tugas {
-  margin-top: 10px;
-}
-
-#filter-container {
+.filters {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin: 14px 0;
 }
 
-#filter-container button {
+.filters button {
   padding: 8px 12px;
   background: var(--input);
   color: var(--muted);
   border: 1px solid var(--border);
-  font-size: .85rem;
+  box-shadow: none;
+  font-size: .84rem;
 }
 
-#filter-container button:hover {
-  color: var(--primary);
-  background: var(--input);
-}
-
-#filter-container button.active {
-  background: var(--primary);
+.filters button:hover {
   color: white;
+  background: var(--primary);
   border-color: var(--primary);
 }
 
 #daftar-tugas {
   display: grid;
-  gap: 8px;
+  gap: 9px;
   list-style: none;
 }
 
@@ -215,61 +225,59 @@ button:active {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 11px 12px;
-  min-height: 50px;
+  padding: 12px;
+  min-height: 52px;
   background: var(--input);
   border: 1px solid var(--border);
-  border-radius: 11px;
-  transition: border-color .2s ease, transform .2s ease;
+  border-radius: 14px;
+  transition: transform .18s ease, border-color .18s ease;
 }
 
 .tugas-item:hover {
   border-color: var(--primary);
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
-.tugas-item.menyeret {
-  opacity: .45;
-}
-
-.tugas-item.tujuan-drop {
-  border: 1px dashed var(--primary);
-}
-
-.drag-handle {
-  color: var(--muted);
-  cursor: grab;
-  user-select: none;
-}
-
-.max {
+.tugas-nama {
   flex: 1;
-  color: var(--text);
   cursor: pointer;
   word-break: break-word;
 }
 
-.tugas-item button {
-  padding: 6px 9px;
+.tugas-selesai {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.tugas-item.dragging {
+  opacity: .45;
+}
+
+.btn-hapus,
+.btn-hapus-catatan {
+  padding: 7px 10px;
   background: transparent;
   color: var(--danger);
+  border: 1px solid var(--border);
+  box-shadow: none;
   font-size: .8rem;
 }
 
-.tugas-item button:hover {
-  background: rgba(239, 68, 68, .08);
+.btn-hapus:hover,
+.btn-hapus-catatan:hover {
+  background: rgba(239, 111, 125, .1);
   color: var(--danger);
 }
 
 #form-catatan {
   display: grid;
-  gap: 9px;
+  gap: 10px;
   margin-bottom: 18px;
 }
 
 #daftar-catatan {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
 }
 
@@ -277,52 +285,65 @@ button:active {
   padding: 15px;
   background: var(--input);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 15px;
 }
 
-.catatan-item p {
+.catatan-isi {
   margin-bottom: 10px;
   line-height: 1.6;
-  white-space: pre-wrap;
   word-break: break-word;
+  white-space: pre-wrap;
+  cursor: pointer;
 }
 
-.catatan-item small {
+.catatan-tanggal {
   display: block;
   margin-bottom: 12px;
   color: var(--muted);
   font-size: .75rem;
 }
 
-.catatan-item button {
-  margin: 24px;
-  padding: 6px 9px;
-  background: transparent;
-  color: var(--danger);
-  border: 1px solid var(--border);
-  font-size: .8rem;
+.card-header-flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.btn-sm {
+  padding: 7px 11px;
+  font-size: .78rem;
+}
+
+#kutipan-harian {
+  padding: 15px;
+  background: var(--primary-soft);
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.weather-card {
+  overflow: hidden;
 }
 
 #info-cuaca {
-  margin-top: 12px;
+  margin: 14px 0;
   padding: 16px;
-  min-height: 80px;
+  min-height: 82px;
   background: var(--input);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 15px;
+  color: var(--text);
 }
 
-#cuaca button {
-  margin-top: 10px;
-}
-
-#info-cuaca p {
-  line-height: 1.6;
-}
-
-#info-cuaca p:first-child {
-  font-size: 1.1rem;
-  font-weight: 600;
+.cuaca-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 footer {
@@ -332,28 +353,35 @@ footer {
   font-size: .8rem;
 }
 
-@media (max-width: 650px) {
-  .topbar {
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .theme-button {
+  #toggle-tema {
     width: 100%;
   }
 
-  #tugas > input[type="text"] {
-    width: 100%;
-    margin: 0 0 7px;
+  #form-tugas,
+  .cuaca-form {
+    grid-template-columns: 1fr;
   }
 
-  #tugas > input[type="text"] + button {
-    width: 100%;
+  .card {
+    padding: 17px;
+    border-radius: 17px;
   }
 
-  section,
-  #kutipan-container {
-    padding: 18px;
+  main,
+  header {
+    width: min(100% - 20px, 1100px);
   }
 }
 
