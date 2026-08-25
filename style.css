@@ -136,10 +136,10 @@ textarea {
 
 button {
   padding: 10px 14px;
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--primary);
-  color: #ffffff;
+  color: #000000;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
