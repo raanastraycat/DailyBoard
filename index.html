@@ -1,27 +1,94 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DailyBoard - dashboard sederhana untuk tugas, catatan, cuaca, dan kutipan harian">
-    <title>DailyBoard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DailyBoard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="topbar">
-        <div>
-            <h1>DailyBoard</h1>
+<header>
+  <div>
+    <h1>DailyBoard</h1>
+    <p class="status">Dashboard harian</p>
+  </div>
+  <button id="toggle-tema" type="button">Mode Dark</button>
+</header>
+
+<main>
+  <div class="left-column">
+    <section class="card">
+      <h2>Tugas</h2>
+      <p class="hint">Klik tugas untuk selesai. Drag untuk mengubah urutan.</p>
+
+      <form id="form-tugas">
+        <input id="input-tugas" type="text" placeholder="Masukkan tugas..." maxlength="100">
+        <button type="submit">Tambah</button>
+      </form>
+
+      <div class="task-tools">
+        <div class="filters">
+          <button type="button" data-filter="semua">Semua</button>
+          <button type="button" data-filter="selesai">Selesai</button>
+          <button type="button" data-filter="belum">Belum Selesai</button>
         </div>
-        <button id="toggle-tema" class="theme-button" type="button">Mode Gelap</button>
-    </header>
+        <input id="cari-tugas" type="search" placeholder="Cari tugas...">
+      </div>
 
-    <main id="app">
-    </main>
+      <ul id="daftar-tugas"></ul>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 DailyBoard</p>
-    </footer>
+    <section class="card">
+      <h2>Catatan</h2>
 
-    <script type="module" src="js/main.js"></script>
+      <form id="form-catatan">
+        <textarea id="input-catatan" placeholder="Tulis catatan cepat..." maxlength="100"></textarea>
+        <button type="submit">Tambah Catatan</button>
+      </form>
+
+      <div id="daftar-catatan"></div>
+    </section>
+  </div>
+
+  <div class="right-column">
+    <section class="card">
+    <div class="card-header-flex">
+        <h2>Kutipan Hari Ini</h2>
+        <button id="refresh-kutipan" class="btn-sm">Refresh</button>
+    </div>
+
+    <div id="kutipan-harian">
+        Memuat kutipan...
+    </div>
+
+    <p id="status-kutipan" class="status"></p>
+    </section>
+
+    <section class="card weather-card">
+      <div class="card-header-flex">
+        <div>
+          <h2>Cuaca</h2>
+          <p id="weather-location" class="hint">Memuat cuaca...</p>
+        </div>
+        <button id="refresh-cuaca" type="button" class="btn-sm">Refresh</button>
+      </div>
+
+      <div id="info-cuaca">Mengambil data cuaca...</div>
+
+      <form id="form-cuaca" class="cuaca-form">
+        <input id="input-kota" type="text" value="Bandung" placeholder="Nama kota">
+        <button type="submit">Ganti Kota</button>
+      </form>
+
+      <p id="status-cuaca" class="status"></p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; DailyBoard 202?</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
